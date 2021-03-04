@@ -1,0 +1,44 @@
+/* styles.scss (src/components/InputPanel) */
+/* Version 0.1.0 */
+/* 1-February 2021 */
+/* Author: Jacob A. Liss, P.E. */
+
+/* IMPORT */
+@import '../../scss/base.scss';
+
+/* CONTAINER */
+#InputPanel-container {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#InputPanel-BoardInput {
+    height: auto;
+    flex: 1 1 25%;
+    text-align: center;
+}
+
+#InputPanel-LightInput {
+    height: auto;
+    flex: 1 1 25%;
+    text-align: center;
+}
+
+#InputPanel-AddPart {
+    height: auto;
+    flex: 1 1 25%;
+    text-align: center;
+}
+
+#InputPanel-EditPart {
+    height: auto;
+    flex: 1 1 25%;
+    text-align: center;
+}
+
+

@@ -1,0 +1,51 @@
+/* _refs.scss (src/scss) */
+/* Version 0.1.0 */
+/* 1-February 2021 */
+/* Developer: Jacob A. Liss, P.E. */
+
+/* Colors */
+$b-color: #f7f8ff;
+$b-color-light: #edeef5;
+$b-color-dark: #81c8f7;
+$b-color-darker: #126399;
+$b-color-darkest: #063554;
+$b-color-pop: #33aeff;
+$b-color-contrast: #81f7a8;
+$b-color-gradient: linear-gradient(to bottom right, #edeef5, #81c8f7);
+$b-color-text: #1A5190;
+$b-color-text-dark: #063554;
+$b-color-up: #32cd32; /* Lime Green */
+$b-color-down: #ff4500; /* Orange Red */
+
+/* Fonts */
+$b-font: 'Nunito', Arial, sans-serif;
+$b-font-heading: "Luckiest Guy", Arial, sans-serif;
+$b-font-number: "Righteous", Courier, monospace;
+
+/* Borders */
+$b-border: 2px solid black;
+$b-border-button: 2px outset #027832;
+$b-border-hover: 2px outset #00ff68;
+$b-border-panel: 2px groove #7f9bad;
+$b-border-focus: thin dotted black;
+$b-outline: thin dotted #cce8ff;
+
+/* Buttons */
+$b-button-active: translateY(2px);
+
+/* Debug */
+$debug1: 1px dashed blue;
+$debug2: 1px dashed green;
+$debug3: 1px dashed red;
+
+
+
+
+
+
+
+
+
+
+
+

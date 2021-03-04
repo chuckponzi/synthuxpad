@@ -1,0 +1,41 @@
+/* styles.scss (src/components/App) */
+/* Version 0.1.0 */
+/* 1-February 2021 */
+/* Author: Jacob A. Liss, P.E. */
+
+/* IMPORT */
+@import '../../scss/base.scss';
+
+/* CONTAINER */
+#App-container {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2px 0 2px 0;
+    margin: 0;
+}
+
+#App-MyScene {
+    height: 700px;
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: $debug1;
+}
+
+#App-InputPanel {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border: $debug1;
+}
+
+
+

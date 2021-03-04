@@ -1,0 +1,317 @@
+/* base.scss (src/scss) */
+/* Version 0.1.0 */
+/* 1-February 2021 */
+/* Developer: Jacob A. Liss, P.E. */
+
+
+/* IMPORT */
+@import './_refs.scss';
+
+/* MIXINS */
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+@mixin for-tablet-portrait-only {
+    @media (min-width: 600px) and (max-width: 899px) {
+        @content;
+    }
+}
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+@mixin for-tablet-landscape-only {
+    @media (min-width: 900px) and (max-width: 1199px) {
+        @content;
+    }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+@mixin for-desktop-only {
+    @media (min-width: 1200px) and (max-width: 1799px) {
+        @content;
+    }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}
+
+/* HTML TAGS */
+
+#root {
+    padding: 0 6px 0 6px;
+}
+/* works best so far, because this padding is not inherited by body */
+
+body {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 62.5%;
+    color: $b-color-text;
+    background-color: $b-color;
+}
+/* Medium (Base) Font is 16px, so 62.5% means that 1em =~ 10px */
+/* this should scale down with the browser zoom */
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+a:focus {
+    outline: $b-border-focus;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: $b-border-focus;
+}
+
+button:active {
+    transform: $b-button-active;
+}
+
+/* CLASSES (Basic Div Types) */
+
+.Base-block {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.Base-inFlex {
+    height: auto;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center
+}
+
+.Base-block-flexCol {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-block-flexRow {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-flexedCol-flexCol {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-flexedCol-flexRow {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-flexedCol-block {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.Base-flexedRow-flexCol {
+    height: auto;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-flexedRow-flexRow {
+    height: auto;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Base-flexedRow-block {
+    height: auto;
+    flex: 1 1 auto;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+/* CLASSES (BUTTONS) */
+
+.Base-button {
+    border: $b-border-button;
+    border-radius: 50%;
+    background-color: $b-color-dark;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    margin: 0 2px 0 2px;
+    font-size: 1.8em;
+
+    span {
+        padding: 2px;
+        margin: 0;        
+    }
+}
+
+.Base-button:hover {
+    background-color: $b-color;
+    border: $b-border-hover;
+    cursor: pointer;
+}
+
+.Base-button:active {   
+    transform: translateY(2px);
+}
+
+.Base-button:focus {
+    outline: $b-border-focus;
+}
+
+/* FORMIK CLASSES */
+
+.Formik-Form {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Formik-formRow {
+    flex: 1 1 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0 2px 0;
+    margin: 0;
+}
+
+.Formik-formRow-clocks {
+    height: auto;
+    flex: 1 1 auto;
+    max-width: 45%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0 2px 0;
+    margin: 0;
+}
+
+.Formik-MyInput {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 2px 2px 4px;
+    margin: 0;
+    border: $b-border;
+    border-radius: 0.6em;
+    font-family: $b-font;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.Formik-MyInput-container {
+    height: auto;
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Formik-MyInput-label {
+    flex: 1 1 120px;
+    height: auto;
+    text-align: left;
+    padding: 0 0 0 4px;
+}
+
+.Formik-MyInput-root {
+    flex: 1 1 600px;
+    height: auto;
+}
+
+.Formik-MyInput-error {
+    flex: 1 1 120px;
+    height: auto;
+}
+
+
+
+
+
+
+
+
