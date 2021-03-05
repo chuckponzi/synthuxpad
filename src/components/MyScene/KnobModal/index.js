@@ -1,7 +1,4 @@
 // index.js (src/components/MyScene/KnobModal)
-// Version 0.1.0
-// 19-February 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 import React, { useRef } from "react";
 
@@ -34,5 +31,3 @@ function KnobModal(props) {
 
 export default KnobModal;
 
-// three.js ref
-// BoxGeometry(width : Float, height : Float, depth : Float, widthSegments : Integer, heightSegments : Integer, depthSegments : Integer)

@@ -1,7 +1,4 @@
 // index.js (src/components/MyScene)
-// Version 0.1.0
-// 27-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> NPM PACKAGES <<<<<//
 import React from "react";
@@ -46,6 +43,7 @@ const MyScene = (props) => {
                     camera={{ position: [0, 0, 100] }} 
                     // initial camera only
 
+                    // REFERENCE
                     //gl                            // Props that go into the default webGL-renderer
                     //raycaster                     // Props that go into the default raycaster
                     //shadowMap                     // Props that go into gl.shadowMap, can also be set true for PCFsoft
@@ -89,14 +87,7 @@ const MyScene = (props) => {
                         position={[props.fiber.board.position.x,
                         props.fiber.board.position.y,
                         props.fiber.board.position.z]}
-                    />
-                    {/*<Knob
-                        fiber={props.fiber}
-                        name="Knob 1"
-                        position={[props.fiber.knob.position.x, props.fiber.knob.position.y, props.fiber.board.position.z + props.fiber.board.size.z]}
-                        rotation={[Math.PI/2, 0, 0]}
-                        // old static knob, obsolete
-                    />*/}
+                    /> 
                     {props.partList.knobs.map((item, index) => {
                         // debug here //
                         //
@@ -122,17 +113,8 @@ const MyScene = (props) => {
 
 export default MyScene;
 
-
-// To Do List
-// - Make it work!
-
-// Version History
-// 0.1.0
-// - Brand spankin" new
-
-// ref code
-
-//Canvas will create a translucent WebGL - renderer with the following properties:
+// Fiber Docs Ref
+// Canvas will create a translucent WebGL - renderer with the following properties:
 // antialias = true
 // alpha = true
 // powerPreference = "high-performance"

@@ -1,8 +1,6 @@
 // initial.js (src/components/App/constants)
-// Version 0.1.0
-// 6-February 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
+//>>>>> INITIAL SCENE PARAMETERS <<<<<//
 export const parameters = {
     board: {
         size: {

@@ -200,14 +200,14 @@ button:active {
 
 .Base-button {
     border: $b-border-button;
-    border-radius: 50%;
+    border-radius: 10%;
     background-color: $b-color-dark;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 2px;
     margin: 0 2px 0 2px;
-    font-size: 1.8em;
+    font-size: 1.4em;
 
     span {
         padding: 2px;

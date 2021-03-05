@@ -1,7 +1,4 @@
 // index.js (src/components/InputPanel/BoardInput)
-// Version 0.1.0
-// 27-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> PACKAGES <<<<<//
 import React from "react";
@@ -187,11 +184,10 @@ const BoardInput = (props) => {
                         </div> 
                         <div className="Formik-formRow" >
                             <button
+                                className="Base-button"
                                 title="Update"
                                 type="submit"                                            
-                            >
-                                <span role="img" >UPDATE</span>
-                            </button>
+                            >UPDATE BOARD</button>
                         </div>                          
                     </Form>
                 </Formik>
@@ -201,11 +197,4 @@ const BoardInput = (props) => {
 }
 
 export default BoardInput;
-
-// To Do List
-// - 
-
-// Version History
-// -
-
 

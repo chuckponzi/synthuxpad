@@ -1,7 +1,4 @@
 // index.js (src/components/InputPanel/EditPart)
-// Version 0.1.0
-// 5-February 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> PACKAGES <<<<<//
 import React from "react";
@@ -32,6 +29,7 @@ const EditPart = (props) => {
                     </Form>
                 </Formik>
             </div>
+            {/* original static version below - keep for reference */}
             {/*<div className="Base-flexedCol-block">                    
                 <Formik
                     initialValues={{
@@ -133,10 +131,6 @@ const EditPart = (props) => {
 
 export default EditPart;
 
-// To Do List
-// - menu to identify which part to edit by type and index
 
-// Version History
-// -
 
 

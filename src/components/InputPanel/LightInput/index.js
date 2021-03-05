@@ -1,7 +1,4 @@
 // index.js (src/components/InputPanel/LightInput)
-// Version 0.1.0
-// 27-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> PACKAGES <<<<<//
 import React from "react";
@@ -197,11 +194,10 @@ const LightInput = (props) => {
                         </div>   
                         <div className="Formik-formRow" >
                             <button
+                                className="Base-button"
                                 title="Update"
                                 type="submit"                                            
-                            >
-                                <span>UPDATE</span>
-                            </button>
+                            >UPDATE LIGHTING</button>
                         </div>                       
                     </Form>
                 </Formik>
@@ -212,10 +208,5 @@ const LightInput = (props) => {
 
 export default LightInput;
 
-// To Do List
-// - 
-
-// Version History
-// -
 
 

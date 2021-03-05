@@ -1,7 +1,4 @@
 // index.js (src/components/MyScene/Box)
-// Version 0.1.0
-// 28-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 import React, { useRef } from "react";
 

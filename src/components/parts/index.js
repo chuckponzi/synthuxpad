@@ -1,8 +1,6 @@
 // parts.js (src/components/App/parts)
-// Version 0.1.0
-// 1-March 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
+//>>>>> PARTS CATALOG <<<<<//
 export const catalog = {
     knobs: [
         {
@@ -56,8 +54,10 @@ export const catalog = {
     ]
 };
 
+//>>>>> PART GROUP LIST <<<<<//
 export const groups = Object.keys(catalog);
 
+//>>>>> DATA OBJECT REDUCED TO ARRAY OF ARRAYS FOR MENUS <<<<<//
 export const names = groups.map(item => {
     let array = catalog[item].map(val => {
         return val.name;

@@ -1,7 +1,4 @@
 // index.js (src/components/App)
-// Version 0.1.0
-// 27-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> NPM PACKAGES <<<<<//
 import React, { useState, useReducer } from "react";
@@ -25,7 +22,6 @@ function paramReducer(initState, action) {
                 [action.type]: action.data
             };
             return newState;
-            break;
         case "light":
             // keep this one
             newState = {
@@ -33,7 +29,6 @@ function paramReducer(initState, action) {
                 [action.type]: action.data
             };
             return newState;
-            break;
         case "knob":
             // obsolete syntax
             // update for new part list
@@ -42,7 +37,6 @@ function paramReducer(initState, action) {
                 [action.type]: action.data
             };
             return newState;
-            break;
         default:
             newState = initState;
             console.log("reducer error", initState, action);
@@ -59,11 +53,11 @@ const App = () => {
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
     //
     // **Objective**
-    // 
-    // 
+    // - This reducer is for all the required parts setup options
+    // - For now this is limited to lighting and the board itself
     // 
     // **Comments**
-    // - 
+    // - Cannot control the camera dynamically this way
     // - 
     //
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
@@ -90,14 +84,11 @@ const App = () => {
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
     //
     // **Objective**
-    // 
+    // - Add, delete, clear the part list
     // 
     // 
     // **Comments**
-    // - not sure yet if this will be a useReducer or useState
-    // - probably like the line reducer in chart app (add/delete/edit action types)
-    // - leave static until form is done
-    // - this should be empty at startup when it's done
+    // - useState to start, but this may be better as a useReducer with many parts
     //
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
@@ -131,13 +122,3 @@ const App = () => {
 };
 
 export default App;
-
-
-// To Do List
-// - Make it work!
-
-// Version History
-// 0.1.0
-// - Brand spankin" new
-
-// ref code

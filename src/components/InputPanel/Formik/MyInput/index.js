@@ -1,7 +1,4 @@
 // Title: index.js (src/components/InputPanel/Formik/MyInput)
-// Version: 0.1.0
-// Date: 30-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> PACKAGES <<<<<//
 import React from 'react';
