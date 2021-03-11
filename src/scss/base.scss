@@ -279,6 +279,29 @@ button:active {
     font-weight: bold;
 }
 
+.Formik-MySelect {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 2px 2px 4px;
+    margin: 0;
+    border: $b-border;
+    border-radius: 0.6em;
+    font-family: $b-font;
+    font-size: 1.5em;
+    font-weight: bold;
+
+    option {
+        height: auto;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2px 2px 2px 4px;
+        margin: 0;
+        font-family: $b-font;
+        font-weight: bold;
+    }
+}
+
 .Formik-MyInput-container {
     height: auto;
     flex: 1 1 100%;
@@ -304,6 +327,35 @@ button:active {
 }
 
 .Formik-MyInput-error {
+    flex: 1 1 120px;
+    height: auto;
+}
+
+.Formik-MySelect-container {
+    height: auto;
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Formik-MySelect-label {
+    flex: 1 1 120px;
+    height: auto;
+    text-align: left;
+    padding: 0 0 0 4px;
+}
+
+.Formik-MySelect-root {
+    flex: 1 1 600px;
+    height: auto;
+}
+
+.Formik-MySelect-error {
     flex: 1 1 120px;
     height: auto;
 }

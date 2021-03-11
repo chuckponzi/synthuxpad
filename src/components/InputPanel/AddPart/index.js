@@ -39,7 +39,7 @@ const AddPart = () => {
             <div className="Base-flexedCol-block">
                 <h3>ADD A PART</h3>
             </div>
-            <div>
+            <div className="Base-flexedCol-block">
                 <Formik
                     initialValues={{
                         group: groupOptions[0],
@@ -50,22 +50,24 @@ const AddPart = () => {
                         setFieldValue,
                         handleChange
                     }) => (
-                            <Form>
-                                <MySelect
-                                    name="group"
-                                    optionList={groupOptions}
-                                    onChange={(e) => {
-                                        setActiveGroup(e.target.value);
-                                        handleChange(e);
-                                    }}
-                                />
-
-                                
+                            <Form className="Formik-Form" >
+                                <div className="Formik-formRow" >
+                                    <MySelect
+                                        className="Formik-MySelect"
+                                        name="group"
+                                        label="Part Family"
+                                        optionList={groupOptions}
+                                        onChange={(e) => {
+                                            setActiveGroup(e.target.value);
+                                            handleChange(e);
+                                        }}
+                                    />  
+                                </div>
                             </Form>
                         )}
                 </ Formik>
             </div>
-            <div>
+            <div className="Base-flexedCol-block">
                 <Formik
                     initialValues={{
                         partname: namesOptions[0][0],
@@ -85,20 +87,26 @@ const AddPart = () => {
                         setFieldValue,
                         handleChange
                     }) => (
-                        <Form>
-                            <MySelect
-                                name="partname"
-                                optionList={activenames}
-                                onChange={(e) => {
-                                    setActivePart(e.target.value);
-                                    handleChange(e);
-                                }}
-                            />
+                        <Form className="Formik-Form" >
+                            <div className="Formik-formRow" >
+                                <MySelect
+                                    className="Formik-MySelect"
+                                    name="partname"
+                                    label="Part Name"
+                                    optionList={activenames}
+                                    onChange={(e) => {
+                                        setActivePart(e.target.value);
+                                        handleChange(e);
+                                    }}
+                                />
+                            </div>
+                            <div className="Formik-formRow" >
                                 <button
                                     className="Base-button"
                                 title="Add"
                                 type="submit"
-                            >ADD PART</button>
+                                    >ADD PART</button>
+                            </div>     
                         </Form>
                     )}
                 </ Formik>

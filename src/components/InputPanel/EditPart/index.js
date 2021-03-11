@@ -5,9 +5,6 @@ import React from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 
-//>>>>> FORMIK COMPONENT IMPORT <<<<<//
-import MyInput from "../Formik/MyInput";
-
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
@@ -17,7 +14,7 @@ const EditPart = (props) => {
     //>>>>> Return <<<<<//
     return (
         <div
-            id="KnobInput-container"
+            id="EditPart-container"
             className="Base-block-flexCol"
         >
             <div className="Base-flexedCol-block">
