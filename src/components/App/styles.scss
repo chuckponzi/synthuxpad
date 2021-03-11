@@ -23,7 +23,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: $debug1;
+    border: 1px solid black;
 }
 
 #App-InputPanel {
@@ -31,7 +31,7 @@
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-    border: $debug1;
+    border: 1px solid black;
 }
 
 

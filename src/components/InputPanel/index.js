@@ -21,25 +21,25 @@ const InputPanel = (props) => {
     //>>>>> Return <<<<<//
     return (
         <div id="InputPanel-container" >
-            <div className="InputPanel-BoardInput" >
+            <div id="InputPanel-BoardInput" >
                 <BoardInput
                     initParam={props.initParam}
                     onDispatch={props.onDispatch}
                 />
             </div>                           
-            <div className="InputPanel-LightInput">
+            <div id="InputPanel-LightInput">
                 <LightInput
                     initParam={props.initParam}
                     onDispatch={props.onDispatch}
                 />
             </div>
-            <div className="InputPanel-AddPart" >
+            <div id="InputPanel-AddPart" >
                 <AddPart
                     initParam={props.initParam}
                     onDispatch={props.onDispatch}
                 />
             </div> 
-            <div className="InputPanel-EditPart" >
+            <div id="InputPanel-EditPart" >
                 <EditPart
                     initParam={props.initParam}
                     onDispatch={props.onDispatch}
