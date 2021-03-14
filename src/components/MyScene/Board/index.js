@@ -19,17 +19,17 @@ function Board(props) {
             // should take any of these props
             // geometry and material should be as below
             // they are args in mesh(args)
-            // maybe skip spread to avoid doubling up props.fiber
+            // maybe skip spread to avoid doubling up props.sceneState
             ref={mesh}
-            scale={[props.fiber.board.scale.x, props.fiber.board.scale.y, props.fiber.board.scale.z]}
+            scale={[props.sceneState.board.scale.x, props.sceneState.board.scale.y, props.sceneState.board.scale.z]}
         >
             <boxBufferGeometry
-                args={[props.fiber.board.size.x, props.fiber.board.size.y, props.fiber.board.size.z]}
+                args={[props.sceneState.board.size.x, props.sceneState.board.size.y, props.sceneState.board.size.z]}
             />
             <meshStandardMaterial
-                color={parseInt(props.fiber.board.mesh.color.substr(1), 16)}
-                metalness={props.fiber.board.mesh.metal}
-                roughness={props.fiber.board.mesh.rough}
+                color={parseInt(props.sceneState.board.mesh.color.substr(1), 16)}
+                metalness={props.sceneState.board.mesh.metal}
+                roughness={props.sceneState.board.mesh.rough}
             />
         </mesh>
     )

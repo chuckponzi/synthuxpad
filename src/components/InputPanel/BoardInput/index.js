@@ -2,21 +2,24 @@
 
 //>>>>> PACKAGES <<<<<//
 import React from "react";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 //>>>>> FORMIK COMPONENT IMPORT <<<<<//
 import MyInput from "../Formik/MyInput";
 
+//>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
+import { parameters } from "../../../constants/initial";
+
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNTCION <<<<<//  
-const BoardInput = (props) => {  
+const BoardInput = ({ onSceneDisp }) => {  
 
-    const initParam = props.initParam.board;
+    const initBoard = parameters.board;
     
-    //>>>>> Return <<<<<//
+    //>>>>> JSX Return <<<<<//
     return (
         <div
             id="BoardInput-container"
@@ -28,15 +31,15 @@ const BoardInput = (props) => {
             <div className="Base-flexedCol-block">                    
                 <Formik
                     initialValues={{
-                        length: initParam.size.x,
-                        width: initParam.size.y,
-                        height: initParam.size.z,
-                        x: initParam.position.x,
-                        y: initParam.position.y,
-                        z: initParam.position.z,
-                        color: initParam.mesh.color,
-                        metal: initParam.mesh.metal,
-                        rough: initParam.mesh.rough,
+                        length: initBoard.size.x,
+                        width: initBoard.size.y,
+                        height: initBoard.size.z,
+                        x: initBoard.position.x,
+                        y: initBoard.position.y,
+                        z: initBoard.position.z,
+                        color: initBoard.mesh.color,
+                        metal: initBoard.mesh.metal,
+                        rough: initBoard.mesh.rough,
                     }}
                     validationSchema={Yup.object({
                         length: Yup.number()
@@ -70,7 +73,7 @@ const BoardInput = (props) => {
                             .max(1, "Max 1.0"),
                     })}
                     onSubmit={(values) => {
-                        props.onDispatch({
+                        onSceneDisp({
                             type: 'board',
                             data: {
                                 size: {

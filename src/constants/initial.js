@@ -52,5 +52,6 @@ export const parameters = {
                 z: 0
             }
         }
-    }
+    },
+    parts: []
 };

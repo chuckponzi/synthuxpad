@@ -8,15 +8,18 @@ import * as Yup from "yup";
 //>>>>> FORMIK COMPONENT IMPORT <<<<<//
 import MyInput from "../Formik/MyInput";
 
+//>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
+import { parameters } from "../../../constants/initial";
+
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNTCION <<<<<//  
-const LightInput = (props) => {  
+const LightInput = ({ onSceneDisp }) => {  
 
-    const initParam = props.initParam.light;
+    const initLight = parameters.light;
     
-    //>>>>> Return <<<<<//
+    //>>>>> JSX Return <<<<<//
     return (
         <div
             id="LightInput-container"
@@ -28,16 +31,16 @@ const LightInput = (props) => {
             <div className="Base-flexedCol-block">                    
                 <Formik
                     initialValues={{
-                        aIntensity: initParam.ambient.intensity,
-                        aColor: initParam.ambient.color,
-                        sPositionX: initParam.spot.position.x,
-                        sPositionY: initParam.spot.position.y,
-                        sPositionZ: initParam.spot.position.z,                         
-                        sAngle: initParam.spot.angle,
-                        sPenumbra: initParam.spot.penumbra,
-                        pPositionX: initParam.point.position.x,
-                        pPositionY: initParam.point.position.y,
-                        pPositionZ: initParam.point.position.z,
+                        aIntensity: initLight.ambient.intensity,
+                        aColor: initLight.ambient.color,
+                        sPositionX: initLight.spot.position.x,
+                        sPositionY: initLight.spot.position.y,
+                        sPositionZ: initLight.spot.position.z,                         
+                        sAngle: initLight.spot.angle,
+                        sPenumbra: initLight.spot.penumbra,
+                        pPositionX: initLight.point.position.x,
+                        pPositionY: initLight.point.position.y,
+                        pPositionZ: initLight.point.position.z,
                     }}
                     validationSchema={Yup.object({
                         aIntensity: Yup.number()
@@ -65,7 +68,7 @@ const LightInput = (props) => {
                             .required("Required"),
                     })}
                     onSubmit={(values) => {
-                        props.onDispatch({
+                        onSceneDisp({
                             type: 'light',
                             data: { 
                                 ambient: {

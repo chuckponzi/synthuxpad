@@ -10,14 +10,11 @@ import { Canvas } from "react-three-fiber";
 import Board from "./Board";
 import KnobModal from "./KnobModal";
 
-//>>>>> STATIC PARTS CATALOG <<<<<//
-import * as PARTS from "../parts";
-
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNCTION <<<<<//
-const MyScene = (props) => {      
+const MyScene = ({ sceneState }) => {      
 
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
     //
@@ -32,7 +29,7 @@ const MyScene = (props) => {
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
     //>>>>> Debug <<<<<//
-    //console.log("MyScene - props", props);
+    console.log(sceneState);
     //>>>>> Debug <<<<<//
 
     //>>>>> Return <<<<<//
@@ -63,31 +60,32 @@ const MyScene = (props) => {
                     //className
                 >
                     <ambientLight
-                        color={parseInt(props.fiber.light.ambient.color.substr(1), 16)}
-                        intensity={props.fiber.light.ambient.intensity}
+                        color={parseInt(sceneState.light.ambient.color.substr(1), 16)}
+                        intensity={sceneState.light.ambient.intensity}
                     />
                     <spotLight
-                        position={[props.fiber.light.spot.position.x,
-                        props.fiber.light.spot.position.y,
-                        props.fiber.light.spot.position.z]}
-                        angle={props.fiber.light.spot.angle}
-                        penumbra={props.fiber.light.spot.penumbra}
+                        position={[sceneState.light.spot.position.x,
+                        sceneState.light.spot.position.y,
+                        sceneState.light.spot.position.z]}
+                        angle={sceneState.light.spot.angle}
+                        penumbra={sceneState.light.spot.penumbra}
                     />
                     <pointLight
-                        position={[props.fiber.light.point.position.x,
-                        props.fiber.light.point.position.y,
-                        props.fiber.light.point.position.z]}
+                        position={[sceneState.light.point.position.x,
+                        sceneState.light.point.position.y,
+                        sceneState.light.point.position.z]}
                     />
                     <Board
-                        fiber={props.fiber}
+                        sceneState={sceneState}
                         // better to deconstruct this rather than dump the entire variable
                         // once the "parameters" prop works in modal, copycat here
                         name="My Board"
                         visible={true}
-                        position={[props.fiber.board.position.x,
-                        props.fiber.board.position.y,
-                        props.fiber.board.position.z]}
-                    /> 
+                        position={[sceneState.board.position.x,
+                        sceneState.board.position.y,
+                        sceneState.board.position.z]}
+                    />
+                    {/*
                     {props.partList.knobs.map((item, index) => {
                         // debug here //
                         //
@@ -95,15 +93,16 @@ const MyScene = (props) => {
                         return (
                             <KnobModal
                                 name={"Knob " + index}
-                                position={[item.position.x, item.position.y, props.fiber.board.position.z + props.fiber.board.size.z]}
+                                position={[item.position.x, item.position.y, sceneState.board.position.z + sceneState.board.size.z]}
                                 rotation={[Math.PI / 2, 0, 0]}
                                 parameters={{
-                                    size: PARTS.catalog.knobs[item.id].size,
-                                    mesh: PARTS.catalog.knobs[item.id].mesh,
+                                    size: partCatalog.knobs[item.id].size,
+                                    mesh: partCatalog.knobs[item.id].mesh,
                                 }}
                             />
                         )                        
                     })}
+                    */}
                 </Canvas>   
             </div>
                    

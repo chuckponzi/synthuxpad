@@ -8,26 +8,22 @@ import { Formik, Form } from "formik";
 import MySelect from "../Formik/MySelect";
 
 //>>>>> STATIC PARTS CATALOG <<<<<//
-import * as PARTS from "../../parts";
+import { partGroups, partNames } from "../../../constants/catalog";
 
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNCTION <<<<<//  
-const AddPart = () => {  
-
-    //>>>>> <select /> Arrays <<<<<//
-    const groupOptions = PARTS.groups;
-    const namesOptions = PARTS.names;
+const AddPart = ({ onSceneDisp }) => {  
 
     //>>>>> Hooks <<<<<//
-    const [activegroup, setActiveGroup] = useState(groupOptions[0]);
-    const [activenames, setActiveNames] = useState(namesOptions[0]);
-    const [activepart, setActivePart] = useState(namesOptions[0][0]);    
+    const [activegroup, setActiveGroup] = useState(partGroups[0]);
+    const [activenames, setActiveNames] = useState(partNames[0]);
+    const [activepart, setActivePart] = useState(partNames[0][0]);    
     useEffect(() => {
-        const activeIndex = groupOptions.indexOf(activegroup);        
-        setActiveNames(namesOptions[activeIndex]);
-        setActivePart(namesOptions[activeIndex][0]);
+        const activeIndex = partGroups.indexOf(activegroup);        
+        setActiveNames(partNames[activeIndex]);
+        setActivePart(partNames[activeIndex][0]);
     }, [activegroup]);
     
     //>>>>> Return JSX <<<<<//
@@ -42,8 +38,9 @@ const AddPart = () => {
             <div className="Base-flexedCol-block">
                 <Formik
                     initialValues={{
-                        group: groupOptions[0],
-                    }}                    
+                        group: partGroups[0],
+                    }}  
+                    
                 >
                     {({
                         values,
@@ -56,7 +53,7 @@ const AddPart = () => {
                                         className="Formik-MySelect"
                                         name="group"
                                         label="Part Family"
-                                        optionList={groupOptions}
+                                        optionList={partGroups}
                                         onChange={(e) => {
                                             setActiveGroup(e.target.value);
                                             handleChange(e);
@@ -70,12 +67,12 @@ const AddPart = () => {
             <div className="Base-flexedCol-block">
                 <Formik
                     initialValues={{
-                        partname: namesOptions[0][0],
+                        partname: partNames[0][0],
                     }}
                     onSubmit={(values) => {
-                        console.log({
-                            action: "add",
-                            context: {
+                        onSceneDisp({
+                            type: "add",
+                            data: {
                                 type: activegroup,
                                 partName: activepart
                             }
@@ -111,6 +108,18 @@ const AddPart = () => {
                     )}
                 </ Formik>
             </ div>
+            <div className="Base-flexedCol-block" >
+                <button
+                    className="Base-button"
+                    title="Clear"
+                    onClick={() => {
+                        onSceneDisp({
+                            type: "clear",
+                            data: {}
+                        });
+                    }}
+                >CLEAR ALL PARTS</button>
+            </div>     
         </div>
     );    
 }

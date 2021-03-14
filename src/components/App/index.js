@@ -1,40 +1,48 @@
 // index.js (src/components/App)
 
 //>>>>> NPM PACKAGES <<<<<//
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import MyScene from "../MyScene";
 import InputPanel from "../InputPanel";
 
 //>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
-import * as INIT from "./constants/initial";
+import { parameters } from "../../constants/initial";
 
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
-//>>>>> PARAMETERS REDUCER <<<<<//
-function paramReducer(initState, action) {
+//>>>>> SCENE REDUCER <<<<<//
+function paramRed(initState, action) {
     let newState;
     switch (action.type) {
         case "board":
-            // keep this one
             newState = {
                 ...initState,
                 [action.type]: action.data
             };
             return newState;
         case "light":
-            // keep this one
             newState = {
                 ...initState,
                 [action.type]: action.data
             };
             return newState;
-        case "knob":
-            // obsolete syntax
-            // update for new part list
+        case "add":
+            let list = initState.parts;
+            const count = initState.parts.length;
+            list.push({
+                id: count,
+                ...action.data
+            });
             newState = {
                 ...initState,
-                [action.type]: action.data
+                parts: list
+            };
+            return newState;
+        case "clear":
+            newState = {
+                ...initState,
+                parts: []
             };
             return newState;
         default:
@@ -47,8 +55,8 @@ function paramReducer(initState, action) {
 //>>>>> COMPONENT FUNCTION <<<<<//
 const App = () => {
 
-    //>>>>> 1 - Parameter Reducer <<<<<//
-    const [fiber, dispatchFiber] = useReducer(paramReducer, INIT.parameters);
+    //>>>>> 1 - Scene Parameter Reducer <<<<<//
+    const [scenestate, dispatchScene] = useReducer(paramRed, parameters);
 
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
     //
@@ -62,39 +70,8 @@ const App = () => {
     //
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
-    //>>>>> 2 - Installed Parts <<<<<//
-    const [partlist, setPartList] = useState({
-        knobs : [
-            {
-                id: 0,
-                position: { x: -20, y: -20 }
-            },
-            {
-                id: 1,
-                position: { x: 20, y: 20 }
-            },
-            {
-                id: 1,
-                position: { x: 20, y: -10 }
-            }
-        ],
-        switches: false
-    });
-
-    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
-    //
-    // **Objective**
-    // - Add, delete, clear the part list
-    // 
-    // 
-    // **Comments**
-    // - useState to start, but this may be better as a useReducer with many parts
-    //
-    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
-
     //>>>>> Debug <<<<<//
-    // console.log("Hook - fiber", fiber);
-    // console.log("Hook - partlist", partlist);
+    //console.log(scenestate);
     //>>>>> Debug <<<<<//
 
     //>>>>> Return <<<<<//
@@ -105,16 +82,13 @@ const App = () => {
         >    
             <div id="App-MyScene">
                 <MyScene
-                    fiber={fiber}
-                    partList={partlist}
+                    sceneState={scenestate}
                 />               
             </div>         
             <div id="App-InputPanel">
                 <InputPanel
-                    initParam={INIT.parameters}
-                    onDispatch={(e) => dispatchFiber(e)}
-                    onAddPart={(e) => console.log(e)}
-                    partList={partlist}
+                    onSceneDisp={(e) => dispatchScene(e)}
+                    sceneState={scenestate}
                 />
             </div>
         </div>                

@@ -1,7 +1,4 @@
 // index.js (src/components/InputPanel)
-// Version 0.1.0
-// 30-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
 
 //>>>>> PACKAGES <<<<<//
 import React from "react";
@@ -16,34 +13,30 @@ import LightInput from "./LightInput";
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNTCION <<<<<//  
-const InputPanel = (props) => {  
+const InputPanel = ({ onSceneDisp, sceneState }) => {  
     
     //>>>>> Return <<<<<//
     return (
         <div id="InputPanel-container" >
             <div id="InputPanel-BoardInput" >
                 <BoardInput
-                    initParam={props.initParam}
-                    onDispatch={props.onDispatch}
+                    onSceneDisp={onSceneDisp}
                 />
             </div>                           
             <div id="InputPanel-LightInput">
                 <LightInput
-                    initParam={props.initParam}
-                    onDispatch={props.onDispatch}
+                    onSceneDisp={onSceneDisp}
                 />
             </div>
             <div id="InputPanel-AddPart" >
                 <AddPart
-                    initParam={props.initParam}
-                    onDispatch={props.onDispatch}
+                    onSceneDisp={onSceneDisp}
                 />
             </div> 
             <div id="InputPanel-EditPart" >
                 <EditPart
-                    initParam={props.initParam}
-                    onDispatch={props.onDispatch}
-                    partList={props.partList}
+                    onSceneDisp={onSceneDisp}
+                    sceneState={sceneState}
                 />
             </div> 
             
