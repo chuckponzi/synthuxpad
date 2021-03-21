@@ -9,7 +9,8 @@ We intend to add the following functions to the alpha:
 - Custom board sizing, material, color (basic function complete)
 - Custom lighting (basic function complete)
 - Custom camera view (not started)
-- Parts Catalog (dummy version complete, haven't added real parts yet)
+- Parts Catalog (a few real parts added, some still just placeholders)
+- Add, Remove, Clear, Edit for any part in the catalog (partially done, no graphics)
 - Parametric constraints (collision control, edge distance, snap to grid alignment)
 
 
