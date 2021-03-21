@@ -74,7 +74,13 @@ const AddPart = ({ onSceneDisp }) => {
                             type: "add",
                             data: {
                                 type: activegroup,
-                                partName: activepart
+                                partName: activepart,
+                                position: {
+                                    x: 0,
+                                    y: 0,
+                                    z: 0
+                                },
+                                active: false
                             }
                         });
                     }} 

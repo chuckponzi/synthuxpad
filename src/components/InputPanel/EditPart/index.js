@@ -1,15 +1,15 @@
 // index.js (src/components/InputPanel/EditPart)
 
 //>>>>> PACKAGES <<<<<//
-import React from "react";
-import { Formik, Form, useField } from "formik";
-import * as Yup from "yup";
+import React, { useState } from "react";
 
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
 //>>>>> COMPONENT FUNTCION <<<<<//  
-const EditPart = ({ onSceneDisp, sceneState }) => {  
+const EditPart = ({ onSceneDisp, sceneState }) => { 
+
+    const [livepart, setLivePart] = useState(false) 
 
     //>>>>> Return <<<<<//
     return (
@@ -18,14 +18,29 @@ const EditPart = ({ onSceneDisp, sceneState }) => {
             className="Base-block-flexCol"
         >
             <div className="Base-flexedCol-block">
-                <h3>EDIT A PART</h3>
+                <h3>CLICK TO EDIT</h3>
                 {sceneState.parts.map(item => {
                     return (
-                        <p>{item.id + " " + item.partName}</p>
+                        <p
+                            onClick={() => setLivePart(item.id)}
+                        >{item.id + " " + item.partName}</p>
                         )
                 })}
             </div>
-            
+            {livepart || livepart === 0 ? (
+                <div className="Base-flexedCol-block">
+                    <h3>CURRENT</h3>
+                    <p>{"Editing Part " + livepart}</p>
+                    <p>{"Group: " + sceneState.parts[livepart]["type"]}</p>
+                    <p>{"Part Name: " + sceneState.parts[livepart]["partName"]}</p>
+                    <p>
+                        {"Position: (" +
+                        sceneState.parts[livepart]["position"]["x"] + "," +
+                        sceneState.parts[livepart]["position"]["y"] + "," +
+                        sceneState.parts[livepart]["position"]["z"] + ")"}
+                    </p>
+                </div>
+            ) : (null)}            
         </div>
     );    
 }
