@@ -53,5 +53,5 @@ export const parameters = {
             }
         }
     },
-    parts: []
+    parts: false
 };

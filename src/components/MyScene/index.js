@@ -29,7 +29,6 @@ const MyScene = ({ sceneState }) => {
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
     //>>>>> Debug <<<<<//
-    console.log(sceneState);
     //>>>>> Debug <<<<<//
 
     //>>>>> Return <<<<<//

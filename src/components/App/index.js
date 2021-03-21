@@ -29,11 +29,18 @@ function paramRed(initState, action) {
             return newState;
         case "add":
             let list = initState.parts;
-            const count = initState.parts.length;
-            list.push({
-                id: count,
-                ...action.data
-            });
+            if (!list) {
+                list = [{
+                    id: 1,
+                    ...action.data
+                }]
+            } else {
+                const count = initState.parts.length + 1;
+                list.push({
+                    id: count,
+                    ...action.data
+                });
+            };            
             newState = {
                 ...initState,
                 parts: list
@@ -42,7 +49,7 @@ function paramRed(initState, action) {
         case "clear":
             newState = {
                 ...initState,
-                parts: []
+                parts: false
             };
             return newState;
         default:

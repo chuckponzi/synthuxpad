@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 
 //>>>>> FORMIK COMPONENT IMPORT <<<<<//
+import MyInput from "../Formik/MyInput";
 import MySelect from "../Formik/MySelect";
 
 //>>>>> STATIC PARTS CATALOG <<<<<//
@@ -39,8 +40,7 @@ const AddPart = ({ onSceneDisp }) => {
                 <Formik
                     initialValues={{
                         group: partGroups[0],
-                    }}  
-                    
+                    }}                      
                 >
                     {({
                         values,
@@ -69,15 +69,21 @@ const AddPart = ({ onSceneDisp }) => {
                     initialValues={{
                         partname: partNames[0][0],
                     }}
-                    onSubmit={(values) => {
-                        onSceneDisp({
-                            type: "add",
-                            data: {
-                                type: activegroup,
-                                partName: activepart
-                            }
-                        });
-                    }} 
+                    //onSubmit={(values) => {
+                    //    onSceneDisp({
+                    //        type: "add",
+                    //        data: {
+                    //            type: activegroup,
+                    //            partName: activepart,
+                    //            position: {
+                    //                x: 0,
+                    //                y: 0,
+                    //                z: 0
+                    //            },
+                    //            active: false
+                    //        }
+                    //    });
+                    //}} 
                 >
                     {({
                         values,
@@ -97,16 +103,75 @@ const AddPart = ({ onSceneDisp }) => {
                                     }}
                                 />
                             </div>
-                            <div className="Formik-formRow" >
-                                <button
-                                    className="Base-button"
-                                title="Add"
-                                type="submit"
-                                    >ADD PART</button>
-                            </div>     
+                                 
                         </Form>
                     )}
                 </ Formik>
+                <Formik
+                    initialValues={{
+                        posX: 0,
+                        posY: 0,
+                        posZ: 0
+                    }}
+                    onSubmit={(values) => {
+                        onSceneDisp({
+                            type: "add",
+                            data: {
+                                type: activegroup,
+                                partName: activepart,
+                                position: {
+                                    x: values.posX,
+                                    y: values.posY,
+                                    z: values.posZ
+                                },
+                                active: false
+                            }
+                        });
+                    }} 
+                >
+                    {({
+                        values,
+                        setFieldValue,
+                        handleChange
+                    }) => (
+                    <Form>
+                        <div className="Formik-formRow" >
+                            <MyInput
+                                className="Formik-MyInput"
+                                title="X"
+                                label="X"
+                                name="posX"
+                                type="number"
+                            />
+                        </div>
+                        <div className="Formik-formRow" >
+                            <MyInput
+                                className="Formik-MyInput"
+                                title="Y"
+                                label="Y"
+                                name="posY"
+                                type="number"
+                            />
+                        </div>
+                        <div className="Formik-formRow" >
+                            <MyInput
+                                className="Formik-MyInput"
+                                title="Z"
+                                label="Z"
+                                name="posZ"
+                                type="number"
+                            />
+                        </div>  
+                        <div className="Formik-formRow" >
+                            <button
+                                className="Base-button"
+                                title="Add"
+                                type="submit"
+                            >ADD PART</button>
+                        </div>
+                    </Form>
+                    )}
+                </Formik>
             </ div>
             <div className="Base-flexedCol-block" >
                 <button
@@ -115,7 +180,7 @@ const AddPart = ({ onSceneDisp }) => {
                     onClick={() => {
                         onSceneDisp({
                             type: "clear",
-                            data: {}
+                            data: false
                         });
                     }}
                 >CLEAR ALL PARTS</button>
