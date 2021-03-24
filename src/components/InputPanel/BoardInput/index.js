@@ -1,25 +1,38 @@
-// index.js (src/components/InputPanel/BoardInput)
+//------------------------------------------------------------------------------------//
+// Title: index.js (src/components/InputPanel/BoardInput)
 
-//>>>>> PACKAGES <<<<<//
+//>>>>>>>>>> NPM PACKAGES <<<<<<<<<<//
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-//>>>>> FORMIK COMPONENT IMPORT <<<<<//
+//>>>>>>>>>> FORMIK CUSTOM COMPONENTS <<<<<<<<<<//
 import MyInput from "../Formik/MyInput";
 
-//>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
+//>>>>>>>>>> DEFAULT DESIGN PARAMETERS <<<<<<<<<<//
 import { parameters } from "../../../constants/initial";
 
-//>>>>> SCSS STYLES <<<<<//
+//>>>>>>>>>> SCSS STYLES <<<<<<<<<<//
 import "./styles.scss";
 
-//>>>>> COMPONENT FUNTCION <<<<<//  
+//>>>>>>>>>> COMPONENT FUNCTION - BoardInput <<<<<<<<<<//  
 const BoardInput = ({ onSceneDisp }) => {  
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//             
+    //
+    // **Objective**
+    // - 
+    // 
+    // 
+    // **Comments**
+    // - 
+    //
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<// 
+
+    //>>>>>>>>>> Deconstruct Props <<<<<<<<<<//
     const initBoard = parameters.board;
     
-    //>>>>> JSX Return <<<<<//
+    //>>>>>>>>>> JSX Return <<<<<<<<<<//
     return (
         <div
             id="BoardInput-container"
@@ -42,11 +55,11 @@ const BoardInput = ({ onSceneDisp }) => {
                         length: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
-                            .max(100, "Max 100.0"),
+                            .max(100, "Max 300.0"),
                         width: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
-                            .max(100, "Max 100.0"),
+                            .max(100, "Max 300.0"),
                         height: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
@@ -77,11 +90,13 @@ const BoardInput = ({ onSceneDisp }) => {
                                     y: 0,
                                     z: 0
                                 },
+                                // static, user cannot change
                                 scale: {
                                     x: 1,
                                     y: 1,
                                     z: 1
                                 },
+                                // static, user cannot change
                                 mesh: {
                                     color: values.color,
                                     metal: values.metal,
@@ -160,5 +175,6 @@ const BoardInput = ({ onSceneDisp }) => {
     );    
 }
 
+//>>>>>>>>>> EXPORT <<<<<<<<<<//
 export default BoardInput;
 
