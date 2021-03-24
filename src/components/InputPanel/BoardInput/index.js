@@ -34,9 +34,6 @@ const BoardInput = ({ onSceneDisp }) => {
                         length: initBoard.size.x,
                         width: initBoard.size.y,
                         height: initBoard.size.z,
-                        x: initBoard.position.x,
-                        y: initBoard.position.y,
-                        z: initBoard.position.z,
                         color: initBoard.mesh.color,
                         metal: initBoard.mesh.metal,
                         rough: initBoard.mesh.rough,
@@ -54,12 +51,6 @@ const BoardInput = ({ onSceneDisp }) => {
                             .required("Required")
                             .min(0, "Min 0.0")
                             .max(10, "Max 10.0"),
-                        x: Yup.number()
-                            .required("Required"),
-                        y: Yup.number()
-                            .required("Required"),
-                        z: Yup.number()
-                            .required("Required"),
                         color: Yup.string()
                             .matches(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/, "Invalid Color")
                             .required("Required"),      
@@ -82,9 +73,9 @@ const BoardInput = ({ onSceneDisp }) => {
                                     z: values.height
                                 },
                                 position: {
-                                    x: values.x,
-                                    y: values.y,
-                                    z: values.z
+                                    x: 0,
+                                    y: 0,
+                                    z: 0
                                 },
                                 scale: {
                                     x: 1,
@@ -127,37 +118,7 @@ const BoardInput = ({ onSceneDisp }) => {
                                 name="height"
                                 type="number"
                             />
-                        </div>  
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="X"
-                                label="X"
-                                name="x"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="Y"
-                                label="Y"
-                                name="y"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="Z"
-                                label="Z"
-                                name="z"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>  
+                        </div>                          
                         <div className="Formik-formRow" >
                             <MyInput
                                 className="Formik-MyInput"
