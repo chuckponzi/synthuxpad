@@ -4,6 +4,7 @@
 export const partCatalog = {
     "Rotary Knobs": [
         {
+            catalogId: 0,
             name: "OKW Tuning Knob - A1412441",
             partnum: "A1412441",
             size: {
@@ -26,6 +27,7 @@ export const partCatalog = {
             }
         },
         {
+            catalogId: 1,
             name: "OKW Tuning Knob - A1324260",
             partnum: "A1324260",
             size: {
@@ -38,7 +40,7 @@ export const partCatalog = {
                 tap: "M6 x 1"
             },
             mesh: {
-                color: "#050505",
+                color: "#ff0000",
                 metal: 0.5,
                 rough: 1.0,
             },
@@ -50,11 +52,12 @@ export const partCatalog = {
     ],
     "Sliders": [
         {
+            catalogId: 0,
             name: "Type 1 Slider",
             partnum: "00001",
             size: {
-                rBot: 4,
-                rTop: 4,
+                rBot: 1.5,
+                rTop: 1.5,
                 h: 12,
                 w: 50
             },
@@ -63,7 +66,7 @@ export const partCatalog = {
                 tap: "M4 x 0.7"
             },
             mesh: {
-                color: "#c0c0c0",
+                color: "#002aff",
                 metal: 0.5,
                 rough: 1.0,
             },
@@ -73,11 +76,12 @@ export const partCatalog = {
             }
         },
         {
+            catalogId: 1,
             name: "Type 2 Slider",
             partnum: "00002",
             size: {
-                rBot: 6,
-                rTop: 6,
+                rBot: 3,
+                rTop: 3,
                 h: 14,
                 w: 75
             },
@@ -86,7 +90,7 @@ export const partCatalog = {
                 tap: "M6 x 1"
             },
             mesh: {
-                color: "#c0c0c0",
+                color: "#00ff04",
                 metal: 0.5,
                 rough: 1.0,
             },
@@ -98,8 +102,21 @@ export const partCatalog = {
     ]
 };
 
-//>>>>> PART GROUP LIST <<<<<//
+//>>>>> PART GROUP LIST & LENGTH <<<<<//
 export const partGroups = Object.keys(partCatalog);
+
+//>>>>>>>>>> PART LIST STRUCTURE <<<<<<<<<<//
+const setupList = () => {
+    let data = {};
+    let i;
+    const setLength = partGroups.length;
+    for (i = 0; i < setLength; i++) {
+        data[partGroups[i]] = [];
+    };
+    return data;
+};
+export const initPartList = setupList();
+// This is the deconstructed format used in scene mapping
 
 //>>>>> DATA OBJECT REDUCED TO ARRAY OF ARRAYS FOR MENUS <<<<<//
 export const partNames = partGroups.map(item => {
