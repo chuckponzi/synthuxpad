@@ -14,6 +14,7 @@ import "./styles.scss";
 //>>>>> SCENE REDUCER <<<<<//
 function paramRed(initState, action) {
     let newState;
+    let list;
     switch (action.type) {
         case "board":
             newState = {
@@ -28,7 +29,7 @@ function paramRed(initState, action) {
             };
             return newState;
         case "add":
-            let list = initState.parts;
+            list = initState.parts;
             if (!list) {
                 list = [{
                     id: 1,
@@ -52,6 +53,16 @@ function paramRed(initState, action) {
                 parts: false
             };
             return newState;
+        case "clicked":
+            list = initState.ui.clicked;
+            list.push(action.data);
+            newState = {
+                ...initState,
+                ui: {
+                    clicked: list
+                }
+            };
+            return newState
         default:
             newState = initState;
             console.log("reducer error", initState, action);
@@ -78,7 +89,7 @@ const App = () => {
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
     //>>>>> Debug <<<<<//
-    //console.log(scenestate);
+    console.log(scenestate);
     //>>>>> Debug <<<<<//
 
     //>>>>> Return <<<<<//
@@ -89,6 +100,7 @@ const App = () => {
         >    
             <div id="App-MyScene">
                 <MyScene
+                    onSceneDisp={(e) => dispatchScene(e)}
                     sceneState={scenestate}
                 />               
             </div>         

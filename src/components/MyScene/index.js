@@ -18,7 +18,7 @@ import { partGroups, partCatalog, initPartList } from "../../constants/catalog";
 import "./styles.scss";
 
 //>>>>>>>>>> COMPONENT FUNCTION - MyScene <<<<<<<<<<//
-const MyScene = ({ sceneState }) => { 
+const MyScene = ({ sceneState, onSceneDisp }) => { 
 
     const [partlist, setPartList] = useState(initPartList);
     useEffect(() => {
@@ -96,12 +96,20 @@ const MyScene = ({ sceneState }) => {
                             <KnobModal
                                 name={"Knob " + index}
                                 position={[item.position.x, item.position.y,
-                                    sceneState.board.position.z +
-                                    sceneState.board.size.z]}
+                                sceneState.board.position.z +
+                                sceneState.board.size.z]}
                                 rotation={[Math.PI / 2, 0, 0]}
+                                visible={true}
                                 parameters={{
                                     size: partCatalog[partGroups[0]][item.catalogId].size,
                                     mesh: partCatalog[partGroups[0]][item.catalogId].mesh,
+                                }}
+                                onClick={(e) => {
+                                    //console.log(e);
+                                    onSceneDisp({
+                                        type: "clicked",
+                                        data: e
+                                    });
                                 }}
                             />
                         )    
@@ -111,11 +119,12 @@ const MyScene = ({ sceneState }) => {
                     {partlist[partGroups[1]].map((item, index) => {
                         return (
                             <KnobModal
-                                name={"Knob " + index}
+                                name={"Slider " + index}
                                 position={[item.position.x, item.position.y,
                                 sceneState.board.position.z +
                                 sceneState.board.size.z]}
                                 rotation={[Math.PI / 2, 0, 0]}
+                                visible={true}
                                 parameters={{
                                     size: partCatalog[partGroups[1]][item.catalogId].size,
                                     mesh: partCatalog[partGroups[1]][item.catalogId].mesh,
@@ -138,7 +147,7 @@ export default MyScene;
 //
 // **Comments**
 // - camera prop for <Canvas> is initial only. Can't change it dynamically here
-// - <KnobModal> disabled while testing part list functions
+// 
 //
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//  
 
