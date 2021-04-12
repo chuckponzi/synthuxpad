@@ -9,6 +9,8 @@ import { Canvas } from "react-three-fiber";
 
 //>>>>>>>>>> MY THREE COMPONENTS <<<<<<<<<<//
 import Board from "./Board";
+import Ground from "./Ground";
+import BackDrop from "./BackDrop";
 import KnobModal from "./KnobModal";
 
 //>>>>>>>>>> PART CATALOG <<<<<<<<<<//
@@ -78,6 +80,24 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                         position={[sceneState.light.point.position.x,
                         sceneState.light.point.position.y,
                         sceneState.light.point.position.z]}
+                    />
+
+                    {/* RENDER SURROUNDINGS */}
+                    <Ground
+                        object={{
+                            position: [0, 0, 0],
+                            rotation: [0, 0, 0]
+                        }}
+                        geometry={{ args: [2000, 2000, 8, 8] }}
+                        material={{ color: "#67e5e2", metal: 0.1, rough: 0}}                       
+                    />
+                    <BackDrop
+                        object={{
+                            position: [0, sceneState.board.size.y*.5+10, 0],
+                            rotation: [Math.PI / 2, 0, 0]
+                        }}
+                        geometry={{ args: [1000, 100, 8, 8] }}
+                        material={{ color: "white", metal: 0.1, rough: 0 }} 
                     />
 
                     {/* RENDER BOARD */}
