@@ -55,7 +55,17 @@ function paramRed(initState, action) {
             return newState;
         case "clicked":
             list = initState.ui.clicked;
-            list.push(action.data);
+            //console.log(action.data);
+            list.push({
+                camera: action.data.camera,
+                distance: action.data.distance,
+                face: action.data.face,
+                object: action.data.object,
+                point: action.data.point,
+                ray: action.data.ray,
+                unprojectedPoint: action.data.unprojectedPoint,
+                uv: action.data.uv,
+            });
             newState = {
                 ...initState,
                 ui: {

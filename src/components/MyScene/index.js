@@ -105,7 +105,6 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                                     mesh: partCatalog[partGroups[0]][item.catalogId].mesh,
                                 }}
                                 onClick={(e) => {
-                                    //console.log(e);
                                     onSceneDisp({
                                         type: "clicked",
                                         data: e
