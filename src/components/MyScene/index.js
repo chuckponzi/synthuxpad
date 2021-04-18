@@ -112,17 +112,18 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
 
                     {/* RENDER KNOBS */}
                     {partlist[partGroups[0]].map((item, index) => {
+                        console.log(item);
                         return (
                             <KnobModal
-                                name={"Knob " + index}
+                                index={index}
                                 position={[item.position.x, item.position.y,
                                 sceneState.board.position.z +
                                 sceneState.board.size.z]}
                                 rotation={[Math.PI / 2, 0, 0]}
                                 visible={true}
                                 parameters={{
-                                    size: partCatalog[partGroups[0]][item.catalogId].size,
-                                    mesh: partCatalog[partGroups[0]][item.catalogId].mesh,
+                                    size: item.meta.size,
+                                    mesh: item.meta.mesh
                                 }}
                                 onClick={(e) => {
                                     onSceneDisp({
@@ -130,12 +131,14 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                                         data: e
                                     });
                                 }}
+                                onPointerOver={() => console.log(index)}
+                                onPointerOut={() => console.log(index)}
                             />
                         )    
                     })}      
 
                     {/* RENDER SLIDERS (USE KNOB FOR NOW) */}
-                    {partlist[partGroups[1]].map((item, index) => {
+                    {/*{partlist[partGroups[1]].map((item, index) => {
                         return (
                             <KnobModal
                                 name={"Slider " + index}
@@ -150,7 +153,7 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                                 }}
                             />
                         )
-                    })}      
+                    })}*/}      
                     
                 </Canvas>   
             </div>

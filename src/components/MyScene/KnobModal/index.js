@@ -20,6 +20,7 @@ function KnobModal(props) {
             scale={[1, 1, 1]}
         >
             <cylinderBufferGeometry
+                attach="geometry"
                 args={[props.parameters.size.rTop,
                     props.parameters.size.rBot,
                     props.parameters.size.h,
@@ -29,6 +30,7 @@ function KnobModal(props) {
                 //  openEnded : Boolean, thetaStart : Float, thetaLength : Float]
     />
             <meshStandardMaterial
+                attach="material"
                 color={props.parameters.mesh.color}
                 metalness={props.parameters.mesh.metal}
                 roughness={props.parameters.mesh.rough}
