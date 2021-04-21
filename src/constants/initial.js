@@ -33,8 +33,8 @@ export const parameters = {
     },
     light: {
         ambient: {
-            intensity: 1.0,
-            color: "#404040"
+            intensity: 0.6,
+            color: "#f9f9f9"
         },
         spot: {
             position: {
@@ -53,5 +53,9 @@ export const parameters = {
             }
         }
     },
-    parts: false
+    parts: [],
+    ui: {
+        clicked: [],
+        active: []
+    }
 };

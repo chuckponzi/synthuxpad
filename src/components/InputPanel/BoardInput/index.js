@@ -1,25 +1,38 @@
-// index.js (src/components/InputPanel/BoardInput)
+//------------------------------------------------------------------------------------//
+// Title: index.js (src/components/InputPanel/BoardInput)
 
-//>>>>> PACKAGES <<<<<//
+//>>>>>>>>>> NPM PACKAGES <<<<<<<<<<//
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
-//>>>>> FORMIK COMPONENT IMPORT <<<<<//
+//>>>>>>>>>> FORMIK CUSTOM COMPONENTS <<<<<<<<<<//
 import MyInput from "../Formik/MyInput";
 
-//>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
+//>>>>>>>>>> DEFAULT DESIGN PARAMETERS <<<<<<<<<<//
 import { parameters } from "../../../constants/initial";
 
-//>>>>> SCSS STYLES <<<<<//
+//>>>>>>>>>> SCSS STYLES <<<<<<<<<<//
 import "./styles.scss";
 
-//>>>>> COMPONENT FUNTCION <<<<<//  
+//>>>>>>>>>> COMPONENT FUNCTION - BoardInput <<<<<<<<<<//  
 const BoardInput = ({ onSceneDisp }) => {  
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//             
+    //
+    // **Objective**
+    // - 
+    // 
+    // 
+    // **Comments**
+    // - 
+    //
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<// 
+
+    //>>>>>>>>>> Deconstruct Props <<<<<<<<<<//
     const initBoard = parameters.board;
     
-    //>>>>> JSX Return <<<<<//
+    //>>>>>>>>>> JSX Return <<<<<<<<<<//
     return (
         <div
             id="BoardInput-container"
@@ -34,9 +47,6 @@ const BoardInput = ({ onSceneDisp }) => {
                         length: initBoard.size.x,
                         width: initBoard.size.y,
                         height: initBoard.size.z,
-                        x: initBoard.position.x,
-                        y: initBoard.position.y,
-                        z: initBoard.position.z,
                         color: initBoard.mesh.color,
                         metal: initBoard.mesh.metal,
                         rough: initBoard.mesh.rough,
@@ -45,21 +55,15 @@ const BoardInput = ({ onSceneDisp }) => {
                         length: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
-                            .max(100, "Max 100.0"),
+                            .max(100, "Max 300.0"),
                         width: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
-                            .max(100, "Max 100.0"),
+                            .max(100, "Max 300.0"),
                         height: Yup.number()
                             .required("Required")
                             .min(0, "Min 0.0")
                             .max(10, "Max 10.0"),
-                        x: Yup.number()
-                            .required("Required"),
-                        y: Yup.number()
-                            .required("Required"),
-                        z: Yup.number()
-                            .required("Required"),
                         color: Yup.string()
                             .matches(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/, "Invalid Color")
                             .required("Required"),      
@@ -82,15 +86,17 @@ const BoardInput = ({ onSceneDisp }) => {
                                     z: values.height
                                 },
                                 position: {
-                                    x: values.x,
-                                    y: values.y,
-                                    z: values.z
+                                    x: 0,
+                                    y: 0,
+                                    z: 0
                                 },
+                                // static, user cannot change
                                 scale: {
                                     x: 1,
                                     y: 1,
                                     z: 1
                                 },
+                                // static, user cannot change
                                 mesh: {
                                     color: values.color,
                                     metal: values.metal,
@@ -127,37 +133,7 @@ const BoardInput = ({ onSceneDisp }) => {
                                 name="height"
                                 type="number"
                             />
-                        </div>  
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="X"
-                                label="X"
-                                name="x"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="Y"
-                                label="Y"
-                                name="y"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>
-                        <div className="Formik-formRow" >
-                            <MyInput
-                                className="Formik-MyInput"
-                                title="Z"
-                                label="Z"
-                                name="z"
-                                type="number"
-                                disabled={true}
-                            />
-                        </div>  
+                        </div>                          
                         <div className="Formik-formRow" >
                             <MyInput
                                 className="Formik-MyInput"
@@ -199,5 +175,6 @@ const BoardInput = ({ onSceneDisp }) => {
     );    
 }
 
+//>>>>>>>>>> EXPORT <<<<<<<<<<//
 export default BoardInput;
 

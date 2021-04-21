@@ -1,8 +1,10 @@
 Version 0.0.1 
 - First github commit
 - Updated npm packages
-- Fixed dynamic part selection menu
-- Minor styling updates
 - Cleaned out obsolete local version control stuff
+- Created Add/Edit/Clear functions
+- Expanded part catalog for scaling
+- Board fixed at (0,0,0)
 - Live part list added. Add, Clear, Select for Edit now working
-- Catalog expanded with some real parts
+- Added part hover scaling 
+

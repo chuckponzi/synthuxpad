@@ -1,19 +1,25 @@
 // index.js (src/components/App)
 
-//>>>>> NPM PACKAGES <<<<<//
+//>>>>>>>>>> NPM PACKAGES <<<<<//
 import React, { useState, useReducer, useEffect } from "react";
 import MyScene from "../MyScene";
 import InputPanel from "../InputPanel";
 
-//>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
+//>>>>>>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
 import { parameters } from "../../constants/initial";
 
-//>>>>> SCSS STYLES <<<<<//
+//>>>>>>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
 
-//>>>>> SCENE REDUCER <<<<<//
+//>>>>>>>>>> SCENE REDUCER <<<<<//
 function paramRed(initState, action) {
     let newState;
+    let newParts;
+    let newActive;
+    let newClicked;
+    let newUi;
+    let i;
+    let partCount;
     switch (action.type) {
         case "board":
             newState = {
@@ -28,30 +34,85 @@ function paramRed(initState, action) {
             };
             return newState;
         case "add":
-            let list = initState.parts;
-            if (!list) {
-                list = [{
-                    id: 1,
-                    ...action.data
-                }]
-            } else {
-                const count = initState.parts.length + 1;
-                list.push({
-                    id: count,
-                    ...action.data
-                });
-            };            
+            newParts = initState.parts;
+            newParts.push(action.data);
+            newActive = initState.ui.active;
+            newActive.push(false);
             newState = {
                 ...initState,
-                parts: list
+                parts: newParts,
+                ui: {
+                    ...initState.ui,
+                    active: newActive
+                }
             };
             return newState;
         case "clear":
             newState = {
                 ...initState,
-                parts: false
+                ui: {
+                    ...initState.ui,
+                    clicked: [],
+                    active: []
+                },
+                parts: []
             };
             return newState;
+        case "clicked":
+            newClicked = initState.ui.clicked;
+            newClicked.push({
+                camera: action.data.camera,
+                distance: action.data.distance,
+                face: action.data.face,
+                object: action.data.object,
+                point: action.data.point,
+                ray: action.data.ray,
+                unprojectedPoint: action.data.unprojectedPoint,
+                uv: action.data.uv,
+            });
+            newState = {
+                ...initState,
+                ui: {
+                    ...initState.ui,
+                    clicked: newClicked
+                }
+            };
+            return newState;
+        case "active-on":
+
+            newActive = [];
+            partCount = initState.ui.active.length;
+            for (i = 0; i < partCount; i++) {
+                i === action.data ?
+                    newActive.push(true) :
+                    newActive.push(false);
+            };
+
+            newState = {
+                ...initState,
+                ui: {
+                    clicked: initState.ui.clicked,
+                    active: newActive
+                }
+            };
+
+            return newState;
+
+        case "active-off":
+           
+            partCount = initState.ui.active.length;
+            newActive = Array(partCount).fill(false);
+
+            newState = {
+                ...initState,
+                ui: {
+                    clicked: initState.ui.clicked,
+                    active: newActive
+                }
+            };
+
+            return newState;
+
         default:
             newState = initState;
             console.log("reducer error", initState, action);
@@ -59,10 +120,10 @@ function paramRed(initState, action) {
     };
 };
 
-//>>>>> COMPONENT FUNCTION <<<<<//
+//>>>>>>>>>> COMPONENT FUNCTION <<<<<//
 const App = () => {
 
-    //>>>>> 1 - Scene Parameter Reducer <<<<<//
+    //>>>>>>>>>> 1 - Scene Parameter Reducer <<<<<//
     const [scenestate, dispatchScene] = useReducer(paramRed, parameters);
 
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
@@ -72,16 +133,16 @@ const App = () => {
     // - For now this is limited to lighting and the board itself
     // 
     // **Comments**
-    // - Cannot control the camera dynamically this way
+    // - Cannot control the camera dynamically here
     // - 
     //
     // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
 
-    //>>>>> Debug <<<<<//
-    //console.log(scenestate);
-    //>>>>> Debug <<<<<//
+    //>>>>>>>>>> Debug <<<<<//
+    console.log("App - scenestate", scenestate);
+    //>>>>>>>>>> Debug <<<<<//
 
-    //>>>>> Return <<<<<//
+    //>>>>>>>>>> JSX Return <<<<<//
     return (
         <div
             id="App-container"
@@ -89,6 +150,7 @@ const App = () => {
         >    
             <div id="App-MyScene">
                 <MyScene
+                    onSceneDisp={(e) => dispatchScene(e)}
                     sceneState={scenestate}
                 />               
             </div>         
@@ -102,4 +164,5 @@ const App = () => {
     );    
 };
 
+//>>>>>>>>>> EXPORT <<<<<<<<<<//
 export default App;

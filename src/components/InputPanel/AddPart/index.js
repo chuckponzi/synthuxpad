@@ -9,7 +9,7 @@ import MyInput from "../Formik/MyInput";
 import MySelect from "../Formik/MySelect";
 
 //>>>>> STATIC PARTS CATALOG <<<<<//
-import { partGroups, partNames } from "../../../constants/catalog";
+import { partCatalog, partGroups, partNames } from "../../../constants/catalog";
 
 //>>>>> SCSS STYLES <<<<<//
 import "./styles.scss";
@@ -69,21 +69,6 @@ const AddPart = ({ onSceneDisp }) => {
                     initialValues={{
                         partname: partNames[0][0],
                     }}
-                    //onSubmit={(values) => {
-                    //    onSceneDisp({
-                    //        type: "add",
-                    //        data: {
-                    //            type: activegroup,
-                    //            partName: activepart,
-                    //            position: {
-                    //                x: 0,
-                    //                y: 0,
-                    //                z: 0
-                    //            },
-                    //            active: false
-                    //        }
-                    //    });
-                    //}} 
                 >
                     {({
                         values,
@@ -114,6 +99,7 @@ const AddPart = ({ onSceneDisp }) => {
                         posZ: 0
                     }}
                     onSubmit={(values) => {
+                        const catalogData = partCatalog[activegroup].filter(item => item.name === activepart);             
                         onSceneDisp({
                             type: "add",
                             data: {
@@ -124,7 +110,8 @@ const AddPart = ({ onSceneDisp }) => {
                                     y: values.posY,
                                     z: values.posZ
                                 },
-                                active: false
+                                active: false,
+                                meta: catalogData[0]
                             }
                         });
                     }} 
