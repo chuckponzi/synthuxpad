@@ -29,12 +29,12 @@ const EditPart = ({ onSceneDisp, sceneState }) => {
                 <div className="Base-block-flexCol" >
                     <div className="Base-flexedCol-block" >
                         <h3>PART LIST - CLICK TO EDIT</h3>
-                        {sceneState.parts.map(item => {
+                        {sceneState.parts.map((item, index) => {
                             return (
                                 <p
                                     className="EditPart-link"
                                     onClick={() => setLivePart(item.id - 1)}
-                                >{item.id + " " + item.partName}</p>
+                                >{index + " " + item.partName}</p>
                             )
                         })}
                     </div>

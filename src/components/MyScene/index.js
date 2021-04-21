@@ -14,7 +14,7 @@ import BackDrop from "./BackDrop";
 import KnobModal from "./KnobModal";
 
 //>>>>>>>>>> PART CATALOG <<<<<<<<<<//
-import { partGroups, partCatalog, initPartList } from "../../constants/catalog";
+//import { partGroups, partCatalog, initPartList } from "../../constants/catalog";
 
 //>>>>>>>>>> SCSS STYLES <<<<<<<<<<//
 import "./styles.scss";
@@ -22,39 +22,8 @@ import "./styles.scss";
 //>>>>>>>>>> COMPONENT FUNCTION - MyScene <<<<<<<<<<//
 const MyScene = ({ sceneState, onSceneDisp }) => { 
 
-    const [partlist, setPartList] = useState(initPartList);
-    useEffect(() => {
-
-        const updatePartList = () => {
-            const partQty = sceneState.parts.length;
-            if (partQty > 0) {
-                const knobList = sceneState.parts.filter(item => item.type === partGroups[0]);
-                const sliderList = sceneState.parts.filter(item => item.type === partGroups[1]);
-                setPartList({
-                    [partGroups[0]]: knobList,
-                    [partGroups[1]]: sliderList
-                });
-                // standardize this for any length set               
-            } else { 
-                setPartList(initPartList);
-            };
-        };
-        updatePartList();
-
-    }, [sceneState]);
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//             
-    //
-    // **Objective**
-    // - deconstruct SceneState parts list for each modal map
-    // 
-    // **Comments**
-    // - 
-    //
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Notes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<// 
-
     //>>>>>>>>>> Debug <<<<<<<<<<//
     //console.log("sceneState", sceneState);
-    //console.log("partlist", partlist);
     //>>>>>>>>>> Debug <<<<<<<<<<//
 
     //>>>>>>>>>> JSX Return <<<<<<<<<<//
@@ -110,50 +79,41 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                         sceneState.board.position.z]}
                     />                    
 
-                    {/* RENDER KNOBS */}
-                    {partlist[partGroups[0]].map((item, index) => {
-                        console.log(item);
-                        return (
-                            <KnobModal
-                                index={index}
-                                position={[item.position.x, item.position.y,
-                                sceneState.board.position.z +
-                                sceneState.board.size.z]}
-                                rotation={[Math.PI / 2, 0, 0]}
-                                visible={true}
-                                parameters={{
-                                    size: item.meta.size,
-                                    mesh: item.meta.mesh
-                                }}
-                                onClick={(e) => {
-                                    onSceneDisp({
-                                        type: "clicked",
-                                        data: e
-                                    });
-                                }}
-                                onPointerOver={() => console.log(index)}
-                                onPointerOut={() => console.log(index)}
-                            />
-                        )    
-                    })}      
-
-                    {/* RENDER SLIDERS (USE KNOB FOR NOW) */}
-                    {/*{partlist[partGroups[1]].map((item, index) => {
-                        return (
-                            <KnobModal
-                                name={"Slider " + index}
-                                position={[item.position.x, item.position.y,
-                                sceneState.board.position.z +
-                                sceneState.board.size.z]}
-                                rotation={[Math.PI / 2, 0, 0]}
-                                visible={true}
-                                parameters={{
-                                    size: partCatalog[partGroups[1]][item.catalogId].size,
-                                    mesh: partCatalog[partGroups[1]][item.catalogId].mesh,
-                                }}
-                            />
-                        )
-                    })}*/}      
+                    {/* RENDER PARTS */}
+                    {sceneState.parts.length > 0 ? (
+                        
+                            sceneState.parts.map((item, index) => {
+                                //console.log(item);
+                                return (
+                                    <KnobModal
+                                        index={index}
+                                        position={[item.position.x, item.position.y,
+                                        sceneState.board.position.z +
+                                        sceneState.board.size.z]}
+                                        rotation={[Math.PI / 2, 0, 0]}
+                                        visible={true}
+                                        parameters={{
+                                            size: item.meta.size,
+                                            mesh: item.meta.mesh,
+                                            active: sceneState.ui.active[index]
+                                        }}
+                                        onClick={(e) => {
+                                            onSceneDisp({
+                                                type: "clicked",
+                                                data: e
+                                            });
+                                        }}
+                                        onPointerOver={() => {
+                                            onSceneDisp({type: "active-on", data: index})
+                                        }}
+                                        onPointerOut={() => {
+                                            onSceneDisp({ type: "active-off", data: index })
+                                        }}
+                                    />
+                                )
+                            })
+                             
+                    ) : (null)}         
                     
                 </Canvas>   
             </div>

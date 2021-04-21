@@ -17,7 +17,7 @@ function KnobModal(props) {
         <mesh
             {...props}
             ref={mesh}
-            scale={[1, 1, 1]}
+            scale={props.parameters.active ? [1.2, 1.2, 1.2] : [1, 1, 1]}
         >
             <cylinderBufferGeometry
                 attach="geometry"

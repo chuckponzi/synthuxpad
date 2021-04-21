@@ -53,8 +53,9 @@ export const parameters = {
             }
         }
     },
-    parts: false,
+    parts: [],
     ui: {
-        clicked: []
+        clicked: [],
+        active: []
     }
 };
