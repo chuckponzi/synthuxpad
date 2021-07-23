@@ -8,3 +8,5 @@ Version 0.0.1
 - Live part list added. Add, Clear, Select for Edit now working
 - Added part hover scaling 
 
+Version 0.0.2
+

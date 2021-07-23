@@ -1,23 +1,27 @@
-// index.js (src/components/App)
+//------------------------------------------------------------------------------------//
+// Title: index.js (src/components/App)
 
-//>>>>>>>>>> NPM PACKAGES <<<<<//
-import React, { useState, useReducer, useEffect } from "react";
+//>>>>>>>>>> NPM PACKAGES <<<<<<<<<<//
+import React, {
+    useState,
+    useReducer,
+    useEffect
+} from "react";
 import MyScene from "../MyScene";
 import InputPanel from "../InputPanel";
 
-//>>>>>>>>>> DEFAULT DESIGN PARAMETERS <<<<<//
-import { parameters } from "../../constants/initial";
+//>>>>>>>>>> DEFAULT DESIGN PARAMETERS <<<<<<<<<<//
+import { parameters } from "../../constants/initial"; // initial conditions
 
-//>>>>>>>>>> SCSS STYLES <<<<<//
+//>>>>>>>>>> SCSS STYLES <<<<<<<<<<//
 import "./styles.scss";
 
-//>>>>>>>>>> SCENE REDUCER <<<<<//
+//>>>>>>>>>> SCENE REDUCER <<<<<<<<<<//
 function paramRed(initState, action) {
     let newState;
     let newParts;
     let newActive;
     let newClicked;
-    let newUi;
     let i;
     let partCount;
     switch (action.type) {
@@ -120,27 +124,27 @@ function paramRed(initState, action) {
     };
 };
 
-//>>>>>>>>>> COMPONENT FUNCTION <<<<<//
+//>>>>>>>>>> COMPONENT FUNCTION <<<<<<<<<<//
 const App = () => {
 
-    //>>>>>>>>>> 1 - Scene Parameter Reducer <<<<<//
+    //>>>>>>>>>> 1 - Scene Parameter Reducer <<<<<<<<<<//
     const [scenestate, dispatchScene] = useReducer(paramRed, parameters);
 
-    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
+    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes ///
     //
     // **Objective**
-    // - This reducer is for all the required parts setup options
-    // - For now this is limited to lighting and the board itself
+    // [board, camera, lights, parts, ui]
+    // - Takes initial conditions imported from constants
     // 
     // **Comments**
     // - Cannot control the camera dynamically here
-    // - 
+    // - For now this is limited to lighting and the board itself
     //
-    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes //
+    // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes // Notes ///
 
-    //>>>>>>>>>> Debug <<<<<//
-    console.log("App - scenestate", scenestate);
-    //>>>>>>>>>> Debug <<<<<//
+    //>>>>>>>>>> Debug <<<<<<<<<<//
+    console.log("App (hook) - scenestate", scenestate);
+    //>>>>>>>>>> Debug <<<<<<<<<<//
 
     //>>>>>>>>>> JSX Return <<<<<//
     return (
@@ -166,3 +170,5 @@ const App = () => {
 
 //>>>>>>>>>> EXPORT <<<<<<<<<<//
 export default App;
+
+//------------------------------------------------------------------------------------//

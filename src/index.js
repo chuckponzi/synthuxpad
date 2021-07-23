@@ -1,7 +1,4 @@
-// Title: index.js (src)
-// Version 0.1.0
-// Date: 27-January 2021
-// Developers: Roey Tsemah & Jacob Liss, P.E.
+// index.js (src)
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SYNTH <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 //              Design custom synthesizers in React. Powered by Three.js             //

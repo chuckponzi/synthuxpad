@@ -15,6 +15,7 @@ import KnobModal from "./KnobModal";
 
 //>>>>>>>>>> PART CATALOG <<<<<<<<<<//
 //import { partGroups, partCatalog, initPartList } from "../../constants/catalog";
+// obsolete?
 
 //>>>>>>>>>> SCSS STYLES <<<<<<<<<<//
 import "./styles.scss";
@@ -23,7 +24,7 @@ import "./styles.scss";
 const MyScene = ({ sceneState, onSceneDisp }) => { 
 
     //>>>>>>>>>> Debug <<<<<<<<<<//
-    //console.log("sceneState", sceneState);
+    //console.log("MyScene (prop) - sceneState", sceneState);
     //>>>>>>>>>> Debug <<<<<<<<<<//
 
     //>>>>>>>>>> JSX Return <<<<<<<<<<//
@@ -83,7 +84,6 @@ const MyScene = ({ sceneState, onSceneDisp }) => {
                     {sceneState.parts.length > 0 ? (
                         
                             sceneState.parts.map((item, index) => {
-                                //console.log(item);
                                 return (
                                     <KnobModal
                                         index={index}
